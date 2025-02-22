@@ -21,6 +21,7 @@ public class DeleteDataInDatabase {
 			//3rd step: Create Statement
 			Statement stm = con.createStatement();
 			
+			//Query
 			String sql = "DELETE FROM student WHERE id = 103";
 			
 			//4th step: Execute Query
