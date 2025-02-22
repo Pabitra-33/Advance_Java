@@ -21,6 +21,7 @@ public class InsertDataToDatabase {
 			//3rd step: Create Statement
 			Statement stm = con.createStatement();
 			
+			//Query
 			String sql = "INSERT into student values(106,'Amaran',25)";
 			
 			//4th step: Execute Query
