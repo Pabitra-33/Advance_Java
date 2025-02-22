@@ -21,6 +21,7 @@ public class UpdateDataToDatabase {
 			//3rd step: Create Statement
 			Statement stm = con.createStatement();
 			
+			//Query
 			String sql = "UPDATE student set age = 24 WHERE id = 105";
 			
 			//4th step: Execute Query
