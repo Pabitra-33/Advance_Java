@@ -1,4 +1,4 @@
-# Advance Java Practice
+# 📃 Advance Java Practice⛳
 
 ## Description:
 This repository contains a collection of Advanced Java practice programs, covering essential concepts to build robust, enterprise-level applications. 
@@ -7,16 +7,16 @@ This repository contains a collection of Advanced Java practice programs, coveri
 It is designed to help developers gain hands-on experience with server-side Java programming, database integration, and enterprise-level Java concepts.
 
 ## Topics Covered:
-✅ Core Java – OOPs, Exception Handling, Collections, Multithreading
-✅ JDBC (Java Database Connectivity) – Connecting Java with MySQL, CRUD operations, Prepared Statements
-✅ JSP (Java Server Pages) – Dynamic web pages, JSTL, Expression Language (EL), MVC Architecture
-✅ Servlets – Handling HTTP requests, Session Management, Cookies, Request Dispatching
-✅ Java Beans – Reusable Java components, Encapsulation, Getter/Setter Methods
-✅ Multithreading & Concurrency – Threads, Executors, Synchronization, Deadlock Prevention
-✅ Networking in Java – Socket Programming, Client-Server Communication
-✅ JPA & Hibernate (ORM) – Object-Relational Mapping, Annotations, Entity Classes
-✅ Spring Framework (Optional) – Spring MVC, Dependency Injection, Spring Boot Basics
-✅ Web Application Development – Building Dynamic Websites using Java EE Technologies
+✅ Core Java – OOPs, Exception Handling, Collections, Multithreading.<br>
+✅ JDBC (Java Database Connectivity) – Connecting Java with MySQL, CRUD operations, Prepared Statements.<br>
+✅ JSP (Java Server Pages) – Dynamic web pages, JSTL, Expression Language (EL), MVC Architecture.<br>
+✅ Servlets – Handling HTTP requests, Session Management, Cookies, Request Dispatching.<br>
+✅ Java Beans – Reusable Java components, Encapsulation, Getter/Setter Methods.<br>
+✅ Multithreading & Concurrency – Threads, Executors, Synchronization, Deadlock Prevention.<br>
+✅ Networking in Java – Socket Programming, Client-Server Communication.<br>
+✅ JPA & Hibernate (ORM) – Object-Relational Mapping, Annotations, Entity Classes.<br>
+✅ Spring Framework (Optional) – Spring MVC, Dependency Injection, Spring Boot Basics.<br>
+✅ Web Application Development – Building Dynamic Websites using Java EE Technologies.<br>
 
 ## File Structure
 /advance-java <br>
@@ -47,7 +47,14 @@ Connection conn = DriverManager.getConnection(
 http://localhost:8080/your-app-name
 ````
 
+## Future Enhancements
+🔹 Implement full-stack web applications using JSP, Servlets & Hibernate.<br>
+🔹 Add REST API development using JAX-RS.<br>
+🔹 Integrate Spring Boot for modern Java web applications.<br>
+🔹 Include microservices and cloud deployment examples.<br>
+
+
 ## Contributions
-💡 Want to contribute? Feel free to add new programs or improve existing ones by submitting pull requests!
+💡 Want to contribute? Feel free to add new programs or improve existing ones by submitting pull requests!<br>
 
 This repository is mainly used to strengthen my Java skills by doing practice, enhancing my backend expertise, and gaining practical experience with web applications and database integration. 🚀
