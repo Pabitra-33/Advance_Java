@@ -15,7 +15,7 @@ public class SelectFetchDataFromDatabase {
 	public static void main(String[] args) {
 		
 		try {
-			//1st step: Load & register Driver software
+			//1st step: Load & Register Driver software
 			Class.forName("org.postgresql.Driver");
 			
 			//2nd step : Establishing connection
