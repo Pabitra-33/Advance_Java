@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class DeleteDataDynamic {
 	private static String url = "jdbc:postgresql://localhost:5432/school";
@@ -13,6 +14,10 @@ public class DeleteDataDynamic {
 	
 	//main method
 	public static void main(String[] args) throws SQLException {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the Student id whose records you wants to delete: ");
+		int sid = scanner.nextInt();
+		
 		try {
 			//1st step: Load & Register Driver Software
 			Class.forName("org.postgresql.Driver");
@@ -25,7 +30,7 @@ public class DeleteDataDynamic {
 			
 			//3rd step: Creating prepared Statement
 			PreparedStatement pstm = con.prepareStatement(query);
-			pstm.setInt(1, 106);
+			pstm.setInt(1, sid);
 			
 			//4th step: execute query
 			pstm.execute();
@@ -37,6 +42,8 @@ public class DeleteDataDynamic {
 			e.printStackTrace();
 		}
 		finally {
+			scanner.close();//close the scanner connection
+			
 			//5th step: close the connection
 			con.close();
 		}
