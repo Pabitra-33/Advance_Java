@@ -40,7 +40,7 @@ public class InsertDataDynamic {
 			
 			//4th step: Execute Query
 			pstm.execute();
-			System.out.println("Data Saved to database");
+			System.out.println("Successfully inserted data to database..!");
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
