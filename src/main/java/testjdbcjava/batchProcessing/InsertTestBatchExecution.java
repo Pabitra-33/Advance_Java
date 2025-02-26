@@ -6,11 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class TestBatchExecution {
+public class InsertTestBatchExecution {
 	private static String url = "jdbc:postgresql://localhost:5432/school";
 	private static String user = "postgres";
 	private static String password = "123";
-	static Connection conn;
+	static Connection conn;//Connection reference
 	
 	//main method
 	public static void main(String[] args) throws SQLException {
