@@ -15,39 +15,35 @@ public class InsertTestBatchExecution {
 	//main method
 	public static void main(String[] args) throws SQLException {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the teacher id: ");
-		int tid = sc.nextInt();
-		System.out.println("Enter the teacher name: ");
-		String tname = sc.next();
-		sc.nextLine();
-		System.out.println("Enter the teacher age: ");
-		int tage = sc.nextInt();
 		
 		try {
 			//1st step: Load & Register Driver Software
 			Class.forName("org.postgresql.Driver");
+			System.out.println("Driver Software Loaded");
 			
 			//2nd step: Establishing connection
 			conn = DriverManager.getConnection(url, user, password);
+			System.out.println("Connection Established");
 			
 			//String query
 			String query = "INSERT into teacher values(?,?,?)";
 			
 			//3rd step: create Statement(PreparedStatement)
 			PreparedStatement pstm = conn.prepareStatement(query);
-			pstm.setInt(1, tid);
-			pstm.setString(2, tname);
-			pstm.setInt(3, tage);
+			pstm.setInt(1, 105);
+			pstm.setString(2, "Ramana");
+			pstm.setInt(3, 25);
 			pstm.addBatch();
+			pstm.setInt(1, 106);
+			pstm.setString(2, "Dhruva");
+			pstm.setInt(3, 28);
 			pstm.executeBatch();
 			
 			//4th step: Execute Query
 			pstm.execute();
 			System.out.println("Successfully inserted data to database..!");
 			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 		finally {
