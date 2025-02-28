@@ -31,7 +31,7 @@ public class TestExecuteMethods {
 			//4th step: Execute Query
 			//boolean res = pstm.execute();//returns true for select queries and false for non-select queries.
 			//pstm.executeQuery();//CTE: used only for the Select Queries
-			int res = pstm.executeUpdate();//returns 1 for data affect in the table, else returns 0.
+			int res = pstm.executeUpdate();//returns 1 for data affect in the table, else returns 0 if any data does not affect in the table by the query.
 			System.out.println(res);
 			
 			
