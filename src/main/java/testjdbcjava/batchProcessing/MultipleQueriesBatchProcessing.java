@@ -22,18 +22,20 @@ public class MultipleQueriesBatchProcessing {
 			conn = DriverManager.getConnection(url, user, password);
 			
 			//String query
-			String uQuery = "Update teacher set name = Ankita where id = 103";
-			String dQuery = "DELETE from teacher where id = 106";
+			String iQuery = "INSERT into student values(106,'Ankita',23)";
+			String uQuery = "Update student set name = Niroj where id = 105";
+			String dQuery = "DELETE from student where id = 106";
 			
 			//3rd step: create Statement(PreparedStatement)
 			Statement stm = conn.createStatement();
+			stm.addBatch(iQuery);
 			stm.addBatch(uQuery);
 			stm.addBatch(dQuery);
-			stm.executeBatch();
 			
 			//4th step: Execute Query
-			stm.executeUpdate(dQuery);
-			System.out.println("Successfully data updated in database..!");
+			int[] arr = stm.executeBatch();
+			System.out.println(arr.length);
+			System.out.println("Successfully operation performed in database..!");
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

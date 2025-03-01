@@ -6,37 +6,36 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class OneArgConnectionMethod {
-	private static String url = "jdbc:postgresql://localhost:5432/school?user=postgres?password=123";
-	static Connection conn;//Connection reference
+	private static String url = "jdbc:postgresql://localhost:5432/school?user=postgres&password=123";
+	static Connection con;
+	static String query = "INSERT into student values(105,'Bhabna',25)";
 	
-	//main method
 	public static void main(String[] args) throws SQLException {
-	
 		try {
-			//1st step: Load & Register Driver Software
+			//1st step
 			Class.forName("org.postgresql.Driver");
+			System.out.println("Driver Class Loaded");
 			
-			//2nd step: Establishing connection
-			conn = DriverManager.getConnection(url);
+			//2nd step
+			con = DriverManager.getConnection(url);
+			System.out.println("Connection Established");
 			
-			//String query
+			//3rd step
+			Statement stm = con.createStatement();
 			
-			
-			//3rd step: create Statement(PreparedStatement)
-			
-			
-			
-			//4th step: Execute Query
-			
-			System.out.println("Successfully data inserted in database..!");
+			//4th step
+			stm.execute(query);
+			System.out.println("Data inserted Successfully..!");
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		finally {
-			//5th step: close the connection
-			conn.close();
-			System.out.println("Connection Closed");
+			con.close();
+			System.out.println("Connection Closed"
+					+ "");
 		}
 	}
 }
