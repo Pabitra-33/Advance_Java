@@ -23,8 +23,8 @@ public class MultipleQueriesBatchProcessing {
 			
 			//String query
 			String iQuery = "INSERT into student values(106,'Ankita',23)";
-			String uQuery = "Update student set name = Niroj where id = 105";
-			String dQuery = "DELETE from student where id = 106";
+			String uQuery = "Update student set name='Niroj' where id=105";
+			String dQuery = "DELETE from student where id=101";
 			
 			//3rd step: create Statement(PreparedStatement)
 			Statement stm = conn.createStatement();
