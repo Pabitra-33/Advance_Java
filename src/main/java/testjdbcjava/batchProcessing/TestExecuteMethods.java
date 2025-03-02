@@ -29,11 +29,10 @@ public class TestExecuteMethods {
 			pstm.setInt(3, 22);
 			
 			//4th step: Execute Query
-			//boolean res = pstm.execute();//returns true for select queries and false for non-select queries.
+			//boolean res = pstm.execute();//used execute(), which returns true for select queries and false for non-select queries.
 			//pstm.executeQuery();//CTE: used only for the Select Queries
-			int res = pstm.executeUpdate();//returns 1 for data affect in the table, else returns 0 if any data does not affect in the table by the query.
+			int res = pstm.executeUpdate();//used executeUpdate(), which returns 1 for data affect in the table, else returns 0 if any data does not affect in the table by the query.
 			System.out.println(res);
-			
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
