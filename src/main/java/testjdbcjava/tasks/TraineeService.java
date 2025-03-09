@@ -72,14 +72,42 @@ public class TraineeService {
 	
 	//update trainee method
 	public int update() {
+		int res = 0;
+		System.out.print("\nEnter age which you want to update: ");
+		int age = sc.nextInt();
+		System.out.print("Enter employee id, whose data you want to update: ");
+		int id = sc.nextInt();
+		
 		String uQuery = "UPDATE trainee SET age = ? WHERE id = ?";
-		return 0;
+		try {
+			PreparedStatement pstm = con.prepareStatement(uQuery);
+			pstm.setInt(1, age);
+			pstm.setInt(2, id);
+			
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 	
 	//delete trainee method
 	public int remove() {
+		int res = 0;
+		System.out.print("Enter employee id, whose data you want to delete: ");
+		int id = sc.nextInt();
+		
 		String dQuery = "DELETE FROM trainee WHERE id = ?";
-		return 0;
+		
+		try {
+			PreparedStatement pstm = con.prepareStatement(dQuery);
+			pstm.setInt(1, id);
+			
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 	
 	//fetch trainee by age method
