@@ -2,21 +2,108 @@ package testjdbcjava.tasks;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class TraineeService {
-	private static String url = "jdbc:postgresql://localhost:5432/jspider?user=postgres&password=123";
+	private static String url = "jdbc:postgresql://localhost:5432/jspiders";
+	private static String user = "postgres";
+	private static String password = "123";
 	static Connection con;
+	static PreparedStatement pstm;
+	Scanner sc = new Scanner(System.in);
 	
 	//static block
 	static {
 		try {
 			Class.forName("org.postgresql.Driver");
-			con = DriverManager.getConnection(url);
-		} catch (ClassNotFoundException e) {
+			con = DriverManager.getConnection(url, user, password);
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+		}
+	}//static end
+	
+	//register trainee method
+	public int register() {
+		int result = 0;//creating a result array to store the data returned by the executeBatch method
+		System.out.println("Please enter the below details to register:-");
+		
+		System.out.println("Enter how many records you want to insert: ");
+		int input = sc.nextInt();
+		
+        String iQuery = "INSERT into trainee VALUES(?,?,?)";
+		
+		try {
+			pstm = con.prepareStatement(iQuery);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		while(input >= 1) {
+			System.out.println("Enter the trainee id: ");
+			int id = sc.nextInt();
+			sc.nextLine();
+			System.out.println("Enter employee name: ");
+			String name = sc.next();
+			System.out.println("Enter employee age: ");
+			int age = sc.nextInt();
+			
+			//adding to batch processing
+			try {
+				pstm.setInt(1, id);
+				pstm.setString(2, name);
+				pstm.setInt(3, age);
+				pstm.addBatch();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			input--;
+		}
+		//handling the executeBatch method exception
+		try {
+			pstm.executeBatch();
+			result = pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	//update trainee method
+	public int update() {
+		String uQuery = "UPDATE trainee SET age = ? WHERE id = ?";
+		return 0;
+	}
+	
+	//delete trainee method
+	public int remove() {
+		String dQuery = "DELETE FROM trainee WHERE id = ?";
+		return 0;
+	}
+	
+	//fetch trainee by age method
+	public int getByAge() {
+		String gaQuery = "SELECT * FROM trainee WHERE age = ?";
+		return 0;
+	}
+	
+	//fetch trainee by name method
+	public int getByName() {
+		String gnQuery = "SELECT * FROM trainee WHERE name = ?";
+		
+		return 0;
+	}
+	
+	public boolean exit() {
+		boolean flag = false;
+		try {
+			con.close();
+			flag = true;
+			sc.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return flag;
 	}
 }

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class InsertTestBatchExecution {
 	private static String url = "jdbc:postgresql://localhost:5432/school";
-	private static String user = "postgres";
+	private static String user = "postgres";//db credentials
 	private static String password = "123";
 	static Connection conn;//Connection reference
 	
@@ -30,18 +30,22 @@ public class InsertTestBatchExecution {
 			
 			//3rd step: create Statement(PreparedStatement)
 			PreparedStatement pstm = conn.prepareStatement(query);
-			pstm.setInt(1, 105);
-			pstm.setString(2, "Ramana");
-			pstm.setInt(3, 25);
+			pstm.setInt(1, 1007);
+			pstm.setString(2, "Ankita");
+			pstm.setInt(3, 26);
 			pstm.addBatch();
-			pstm.setInt(1, 106);
-			pstm.setString(2, "Dhruva");
+			pstm.setInt(1, 1000);
+			pstm.setString(2, "Rahul");
 			pstm.setInt(3, 28);
+//			int[] res = pstm.executeBatch();
 			pstm.executeBatch();
+//			System.out.println(Arrays.toString(res));
 			
 			//4th step: Execute Query
-			pstm.execute();
-			System.out.println("Successfully inserted data to database..!");
+			boolean res = pstm.execute();
+			if(res != true) {
+				System.out.println("Successfully inserted data to database..!");
+			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
