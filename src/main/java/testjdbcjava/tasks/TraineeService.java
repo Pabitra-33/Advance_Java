@@ -72,23 +72,39 @@ public class TraineeService {
 	
 	//update trainee method
 	public int update() {
-		int res = 0;
-		System.out.print("\nEnter age which you want to update: ");
-		int age = sc.nextInt();
-		System.out.print("Enter employee id, whose data you want to update: ");
-		int id = sc.nextInt();
+		int result = 0;//creating a result array to store the data returned by the executeBatch method
+		System.out.println("Please enter the below details to update:-");
+		
+		System.out.println("Enter how many records you want to update: ");
+		int input = sc.nextInt();
 		
 		String uQuery = "UPDATE trainee SET age = ? WHERE id = ?";
-		try {
-			PreparedStatement pstm = con.prepareStatement(uQuery);
-			pstm.setInt(1, age);
-			pstm.setInt(2, id);
+		
+		while(input >= 1) {
+			System.out.print("\nEnter age which you want to update: ");
+			int age = sc.nextInt();
+			System.out.print("Enter employee id, whose data you want to update: ");
+			int id = sc.nextInt();
 			
-			res = pstm.executeUpdate();
+			try {
+				PreparedStatement pstm = con.prepareStatement(uQuery);
+				pstm.setInt(1, age);
+				pstm.setInt(2, id);
+				
+				result = pstm.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			input--;
+		}
+		//handling the executeBatch method exception
+		try {
+			pstm.executeBatch();
+			result = pstm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return res;
+		return result;
 	}
 	
 	//delete trainee method
