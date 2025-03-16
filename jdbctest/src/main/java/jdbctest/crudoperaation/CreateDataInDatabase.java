@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class InsertDataInDatabase {
+public class CreateDataInDatabase {
 	private static String url = "jdbc:postgresql://localhost:5432/school";
  	private static String user = "postgres";
  	private static String password = "123";
