@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class InsertDataBatchProcessing {
 	private static String url = "jdbc:postgresql://localhost:5432/school";
- 	private static String user = "postgres";
+ 	private static String user = "postgres";//database credentials
  	private static String password = "123";
  	static Connection conn;//Connection reference
  	
