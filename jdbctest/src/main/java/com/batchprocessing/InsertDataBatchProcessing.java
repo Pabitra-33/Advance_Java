@@ -51,7 +51,7 @@ public class InsertDataBatchProcessing {
  			e.printStackTrace();
  		}
  		finally {
- 			sc.close();
+ 			sc.close();//close the Scanner connection
  			//5th step: close the connection
  			try {
 				conn.close();
