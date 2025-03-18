@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class InsertDataDynamic {
 	private static String url = "jdbc:postgresql://localhost:5432/school";
- 	private static String user = "postgres";
+ 	private static String user = "postgres";//database credentials
  	private static String password = "123";
  	
  	//main method
