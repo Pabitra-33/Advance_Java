@@ -34,6 +34,7 @@ public class UpdateDataBatchProcessing {
  			
  			//3rd step: create Statement(PreparedStatement)
  			Statement stm = conn.createStatement();
+ 			stm.addBatch(uQuery);
  			stm.addBatch(dQuery);
  			stm.executeBatch();
  			
