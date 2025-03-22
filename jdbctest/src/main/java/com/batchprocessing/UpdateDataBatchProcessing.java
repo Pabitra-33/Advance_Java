@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class UpdateDataBatchProcessing {
 	private static String url = "jdbc:postgresql://localhost:5432/school";
- 	private static String user = "postgres";
+ 	private static String user = "postgres";//database credentials
  	private static String password = "123";
  	static Connection conn;//Connection reference
  	
  	//main method
- 	public static void main(String[] args) throws SQLException {
+ 	public static void main(String[] args) {
  		Scanner sc = new Scanner(System.in);
  		System.out.println("Enter the teacher id: ");
  		int tid = sc.nextInt();
@@ -50,7 +50,11 @@ public class UpdateDataBatchProcessing {
  		finally {
  			sc.close();
  			//5th step: close the connection
- 			conn.close();
+ 			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
  		}
  	}
 }
