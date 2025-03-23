@@ -2,8 +2,8 @@ package com.batchprocessing;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Scanner;
 
 public class UpdateDataBatchProcessing {
@@ -30,18 +30,22 @@ public class UpdateDataBatchProcessing {
  			
  			//String query
  			String uQuery = "Update teacher set name = ? where id = ?";
- 			String dQuery = "DELETE from teacher where id = ?";
  			
  			//3rd step: create Statement(PreparedStatement)
- 			Statement stm = conn.createStatement();
- 			stm.addBatch(uQuery);
- 			stm.addBatch(dQuery);
- 			stm.executeBatch();
+ 			PreparedStatement pstm = conn.prepareStatement(uQuery);
+ 			pstm.setString(1, tname);
+ 			pstm.setInt(2, tid);
+ 			pstm.addBatch();
+ 			pstm.executeBatch();
  			
  			//4th step: Execute Query
- 			stm.execute(uQuery);
- 			stm.execute(dQuery);
- 			System.out.println("Successfully updated data to database..!");
+ 			int res = pstm.executeUpdate();
+ 			if(res != 0) {
+ 				System.out.println("Successfully updated data to database..!");
+ 			}
+ 			else {
+ 				System.out.println("Data not updated in the database");
+ 			}
  			
  		} catch (ClassNotFoundException e) {
  			e.printStackTrace();
